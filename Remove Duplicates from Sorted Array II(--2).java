@@ -7,9 +7,10 @@ public class Solution {
         int cur=0;
         boolean bFlag=false;
         for(int i=1;i<A.length;i++){
-            if(A[cur]!=A[i]){bFlag=false;cur++;}
-            else if(!bFlag) {bFlag=true;cur++;}
+            if(A[cur]!=A[i]){bFlag=false;A[++cur]=A[i];}
+            else if(!bFlag) {bFlag=true;A[++cur]=A[i];}
+           
         }
-        return A.length;
+        return cur+1;
     }
 }
