@@ -1,13 +1,27 @@
- HashMap<Integer,Integer> map = new HashMap<Integer,Integer>();
-        for(int i=0;i<inorder.length;i++)
-            map.put(inorder[i],i);
-        return buildTree(map,preorder,inorder,0,preorder.length-1,0,inorder.length-1);
-    }
-    
-    public TreeNode buildTree(HashMap<Integer, Integer> map, int[] preorder, int[]inorder, int a, int b, int c, int d){
-        if(b<a || d<c) return null;
-        TreeNode root = new TreeNode(preorder[a]);
-        int i = map.get(preorder[a]);
-        root.left = buildTree(map, preorder, inorder, a+1,a+i-c,c,i-1);
-        root.right = buildTree(map, preorder, inorder, a+i+1-c,b,i+1,d);
-        return root;
+public class Solution {  
+    public int[] twoSum(int[] numbers, int target) {  
+        // Start typing your Java solution below  
+        // DO NOT write main() function  
+        int len = numbers.length;  
+        assert(len >= 2);  
+          
+        int[] ret = new int[2];  
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();  
+          
+        for(int i = 0; i < len; i++){  
+            if( !map.containsKey(numbers[i]) ){  
+                map.put(target - numbers[i], i);        // save another number  
+            }  
+              
+            if( map.containsKey(numbers[i]) ){          // check is another number  
+                int idx = map.get(numbers[i]);  
+                if(idx < i){  
+                    ret[0] = idx + 1;   // +1 for not zero-based  
+                    ret[1] = i + 1;  
+                }  
+            }  
+        }  
+          
+        return ret;  
+    }  
+}  

@@ -24,3 +24,36 @@ public class Solution {
         return ret;
     }
 }
+
+
+http://tech-wonderland.net/blog/leetcode-subset-i-and-ii.html
+
+
+
+public class Solution {
+    public ArrayList<ArrayList<Integer>> subsets(int[] S) {
+        
+        if(S==null) return null;
+        Arrays.sort(S);
+        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
+                                     
+        for(int i=0;i<S.length;i++){
+            ArrayList<ArrayList<Integer>> cur = new ArrayList<ArrayList<Integer>>();
+            for(ArrayList<Integer> temp:res){
+                cur.add(new ArrayList<Integer>(temp));
+            }
+            
+            for(ArrayList<Integer> temp:cur){
+                temp.add(S[i]);
+            }
+            
+            ArrayList<Integer> temp1 = new ArrayList<Integer>();
+            temp1.add(S[i]);
+            cur.add(temp1);
+            
+            res.addAll(cur);
+        }
+        res.add(new ArrayList<Integer>());
+        return res;
+    }
+}
