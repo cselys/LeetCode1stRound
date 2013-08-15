@@ -25,10 +25,10 @@ ArrayList<ArrayList<Integer>> res = new  ArrayList<ArrayList<Integer>>();
                   temp.add(candidates[j]);
                   ArrayList<ArrayList<Integer>> next = combinationSum(candidates,target-candidates[j],j,prev);                  
               
-          if(next.size()>0)
+          	  if(next.size()>0)
                     res.addAll(next);
-            for(ArrayList<Integer> temp:prev)
-                temp.remove(temp.size()-1);
+	          for(ArrayList<Integer> temp:prev)
+       	           temp.remove(temp.size()-1);
           }
      return res;       
             
